@@ -1,0 +1,341 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5ff, #eae6fa); 
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, #5f43b2, #9477d3); 
+  border-right: 2px solid #e0e0e0;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-top-right-radius: 80px; 
+  border-bottom-right-radius: 80px;
+}
+
+.sidebar h3 {
+  color: white; 
+  margin-left: 0; 
+  font-size: 22px;
+  margin-bottom: 30px;
+  text-align: center; /* Aligns text to the center */
+  width: 100%;
+}
+
+/* Sidebar Menu */
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+  padding-left: 20px; /* Moves list items to the right */
+}
+
+.sidebar ul li {
+  width: 100%;
+  padding: 15px;
+  margin: 10px auto;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  width: 80%;
+ 
+}
+
+.sidebar ul li i {
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+}
+
+.sidebar h1 {
+  color: white !important;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px; /* Adds space below h1 */
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  display: block;
+
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  color: #5f43b2;
+  margin-left: 180px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.dashboard-header {
+  font-size: 16px;
+  font-weight: bold;
+  color: #5f43b2;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 110%;
+  height: 10%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/* Logout Button */
+.logout-btn {
+  padding: 10px 20px;
+  background: #dc3545;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+  margin-top: 20px;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+}
+
+/* Dashboard Cards */
+.dashboard-cards{
+  display: flex;
+  gap: 30px;
+ 
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #5f43b2;
+}
+
+.card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .dashboard-content {
+    margin-left: 240px;
+    padding: 20px;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+    align-items: center;
+   
+  }
+}
+
+.edit-budget-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #5f43b2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.budget-modal {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  margin-bottom: 40px;
+}
+.budget-modal h3 {
+  margin-bottom: 10px;
+}
+
+.budget-modal input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.budget-modal button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.budget-modal button:last-child {
+  background: #ccc;
+}
+
+/* Modal Close Button (X) */
+.close-modal-btn {
+  position: absolute;
+  top: -15px; /* Adjusting position slightly */
+  right: -8px; /* Moves it to the right side */
+  background: transparent;
+  border: none;
+  font-size: 22px; /* Slightly larger for visibility */
+  color: #5f43b2; /* Matches theme color */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.transactions-payments-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* Reduced margin */
+  width: 100%;
+  gap: 15px; /* Reduced gap */
+}
+
+
+.financial-tips {
+  background: white;
+  color: #5f43b2;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  margin-top: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -40px;
+}
+
+.financial-tips h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.financial-tips p {
+  font-size: 16px;
+  font-style: italic;
+   background: linear-gradient(135deg, #5f43b2, #8a64d6);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .transactions-payments-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .transactions-section,
+  .upcoming-payments {
+    max-width: 90%; /* Make sections wider for small screens */
+    min-height: auto; /* Remove fixed height for responsiveness */
+  }
+}
+
+.spending-insights {
+  background: white;
+  color: #5f43b2;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+.spending-insights h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #5f43b2;
+  border-bottom: 1px solid #e0ddee;
+  padding-bottom: 10px;
+}
+
+.spending-insights ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.spending-insights li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  background: #f7f4ff;
+  border-radius: 6px;
+  border-width: 50px;
+}

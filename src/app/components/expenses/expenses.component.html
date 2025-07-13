@@ -1,0 +1,41 @@
+<div class="expense-wrapper">
+  <!-- Expense Form Card (Left) -->
+  <div class="expense-container">
+    <h2>Add Expense</h2>
+
+    <!-- Add Expense Form -->
+    <form (ngSubmit)="addExpense()">
+      <input type="text" placeholder="Expense Title" [(ngModel)]="title" name="title" required />
+      <input type="number" placeholder="Amount (₹)" [(ngModel)]="amount" name="amount" required />
+      <input type="date" [(ngModel)]="date" name="date" required />
+      <select [(ngModel)]="category" name="category" required>
+        <option value="">Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Rent">Rent</option>
+        <option value="Other">Other</option>
+         <option value="Health">Health</option>
+        <option value="Shop">Shop</option>
+        <option value="Utilities">Utilities</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+  </div>
+
+  <!-- Expense List Card (Right) -->
+  <div class="expense-list-container">
+  <h2>Your Expenses</h2>
+  <ul>
+    <li *ngFor="let expense of expenses" class="expense-card">
+      <div class="col title">{{ expense.title }}</div>
+      <div class="col amount">{{ expense.amount | currency: 'INR':'symbol' }}</div>
+      <div class="col action">
+        <button (click)="editExpense(expense)">Edit</button>
+      </div>
+      <div class="col action">
+        <button (click)="deleteExpense(expense)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>

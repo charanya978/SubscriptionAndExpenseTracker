@@ -1,0 +1,13 @@
+.auth-background {
+  background: linear-gradient(135deg, #5f43b2, #c3a2e8);
+  height: 100vh;  /* Ensures it covers full viewport height */
+  width: 100vw;   /* Ensures it covers full viewport width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed; /* Prevents scrolling issues */
+  top: 0;
+  left: 0;
+}
+

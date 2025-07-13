@@ -1,0 +1,86 @@
+
+<div class="light"></div>
+<div class="sidebar">
+  <h1>TrackEase</h1>
+  <ul>
+    <li>
+      <i class="fas fa-wallet"></i>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li>
+      <i class="fas fa-wallet"></i>
+      <a routerLink="/dashboard/expenses" routerLinkActive="active">Expenses</a>
+    </li>
+    <li>
+      <i class="fas fa-credit-card"></i>
+      <a routerLink="/dashboard/subscriptions" routerLinkActive="active">Subscriptions</a>
+    </li>
+    <li>
+      <i class="fas fa-cog"></i>
+      <a routerLink="/dashboard/settings" routerLinkActive="active">Settings</a>
+    </li>
+    <li>
+      <i class="fas fa-sign-out-alt"></i>
+      <a href="#" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</div>
+
+<div class="dashboard-content">
+  <!-- Show dashboard content only if no child route is active -->
+  <div *ngIf="isDashboardPage">
+    <div class="dashboard-header">
+     <h1>Welcome, {{ user.name }}</h1>
+    </div>
+
+    <!--  Dashboard Cards -->
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p>{{ getTotalExpenses() | currency:'INR' }}</p>
+      </div>
+      <div class="card">
+        <h3>Active Subscriptions</h3>
+        <p>{{ subscriptions.length }} Subscriptions</p>
+      </div>
+      <div class="card" [ngClass]="{ 'over-budget': getRemainingBudget() < 0 }">
+        <h3>Remaining Budget</h3>
+        <p>{{ getRemainingBudget() | currency:'INR' }}</p>
+        <p *ngIf="getRemainingBudget() < 0" class="warning">Warning: Over Budget!</p>
+      </div>
+    </div>
+   <!-- Spending Insights -->
+    <div class="spending-insights">
+      <h2>📊 Spending Insights</h2>
+      <ul>
+        <li><strong>Top Category:</strong> {{ topCategory || 'N/A' }}</li>
+        <li><strong>Most Frequent Subscription:</strong> {{ mostFrequentSubscription || 'N/A' }}</li>
+        <li><strong>Largest Expense:</strong> ₹{{ largestExpense?.amount || 0 }} - {{ largestExpense?.name || 'N/A' }}</li>
+        <li><strong>Highest Spending Day:</strong> {{ highestSpendingDay || 'N/A' }}</li>
+      </ul>
+    </div>
+    
+    
+  
+    <!-- 💡 Financial Tips -->
+    <div class="financial-tips">
+      <h2>Financial Tip of the Day</h2>
+      <p>{{ selectedTip }}</p>
+    </div>
+
+    <!-- Edit Budget Button -->
+    <button class="edit-budget-btn" (click)="openBudgetModal()">Edit Budget</button>
+
+    <!-- Budget Modal -->
+    <div class="budget-modal" *ngIf="isBudgetModalOpen">
+      <button class="close-modal-btn" (click)="closeBudgetModal()">x</button>
+
+      <h3>Set Monthly Budget</h3>
+      <input type="number" [(ngModel)]="totalBudget" placeholder="Enter Budget" />
+
+      <button (click)="saveBudget()">Save</button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,32 @@
+<div class="subscriptions-container">
+  <!-- Left Section: Summary & Add Subscription -->
+  <div class="left-section">
+    <div class="summary-box">
+      <h3>Total Subscriptions</h3>
+      <p>{{ subscriptions.length }}</p>
+    </div>
+    <div class="summary-box">
+      <h3>Monthly Cost</h3>
+      <p>{{ getTotalCost() | currency:'INR' }}</p>
+    </div>
+
+    <!-- Add Subscription Box -->
+    <div class="add-subscription">
+      <h3>Add Subscription</h3>
+      <input type="text" placeholder="Subscription Name" [(ngModel)]="newSubscription.name">
+      <input type="number" placeholder="Price" [(ngModel)]="newSubscription.price">
+      <input type="date" [(ngModel)]="newSubscription.renewalDate">
+      <button (click)="addSubscription()">Add Subscription</button>
+    </div>
+  </div>
+
+  <!-- Right Section: Subscription List -->
+  <div class="right-section">
+    <div class="subscription-card" *ngFor="let subscription of subscriptions">
+      <h3>{{ subscription.name }}</h3>
+      <p><strong>Price:</strong> {{ subscription.price | currency:'INR' }}</p>
+      <p><strong>Renewal Date:</strong> {{ subscription.renewalDate | date }}</p>
+      <button class="cancel-btn" (click)="cancelSubscription(subscription.id)">Cancel</button>
+    </div>
+  </div>
+</div>

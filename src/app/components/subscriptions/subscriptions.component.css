@@ -1,0 +1,146 @@
+
+.subscriptions-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  margin-left: 110px;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+  height: 80vh;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  flex-shrink: 0; 
+}
+
+.summary-box, 
+.add-subscription {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-box h3, 
+.add-subscription h3 {
+  color: #5f43b2;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+}
+
+.summary-box p {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.add-subscription input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+}
+
+.add-subscription button {
+  width: 100%;
+  background: #5f43b2;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-subscription button:hover {
+  background: #4a3291;
+}
+
+
+.right-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  width: calc(100% - 340px); 
+  justify-content: flex-start;
+  padding-bottom: 20px; /* ✅ Ensures spacing above the first row of cards */
+  box-sizing: border-box;
+    padding-right: 10px; 
+}
+
+
+.subscription-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.subscription-card:hover {
+  transform: translateY(-5px);
+}
+
+.subscription-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #5f43b2;
+}
+
+.subscription-card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.cancel-btn {
+  background: #dc3545;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+  font-family: "Century Gothic", "Arial Narrow", sans-serif;
+}
+
+.cancel-btn:hover {
+  background: #c82333;
+}
+
+@media (max-width: 1024px) {
+  .right-section {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .subscriptions-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-section {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .right-section {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr); 
+  }
+}
